@@ -1,0 +1,60 @@
+<div class="container">
+    <form action="/api/postform" class="col s12 m6 form">
+        <div class="header">Данные жителя дома</div>
+        <div class="input-field col s11">
+            <label class="active" for="name"><span class="asterisk">*</span> Имя</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="input-field col s11">
+            <label class="active" for="surname">Фамилия</label>
+            <input type="text" name="surname" id="surname">
+        </div>
+
+        <div class="input-field col s11">
+            <label class="active" for="app-num"><span class="asterisk">*</span> Номер квартиры</label>
+            <input type="number" name="appnum"  id="app-num" required min="1" max="1600">
+        </div>
+
+        <div class="input-field col s11">
+            <label class="active" for="tel"><span class="asterisk">*</span> Номер телефона</label>
+            <input type="tel" name="phone" id="tel" required>
+        </div>
+
+        <p class="col s11">Статус жителя</p>
+        <div class="row">
+            <label>
+                <input class="with-gap"  name="status" type="radio" value="owner" checked />
+                <span>Собственник</span>
+            </label>
+            <label>
+                <input class="with-gap" name="status" type="radio" value="renter"/>
+                <span>Арендатор</span>
+            </label>
+        </div>
+
+        <div class="input-field col s11">
+            <label class="active" for="nickname"><span class="asterisk">*</span> Имя в телеграме</label>
+            <input type="text" name="nickname"  id="nickname">
+        </div>
+
+        <div class="input-field col s10" id="unique-nick-field">
+            <label class="active" for="unique-nick">Уникальный ник в телеграме</label>
+            <input type="text" name="uniqueNickname"  id="unique-nick">
+            <div class="svg-question">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="0" gradientUnits="userSpaceOnUse" y1="-9.01" x2="0" y2="-55.29"><stop stop-color="#197ff1"/><stop offset="1" stop-color="#21c6fb"/></linearGradient></defs><g transform="matrix(.99999 0 0 .99999-38.37 55.882)" enable-background="new"><circle cx="62.37" cy="-31.875" r="24" fill="url(#0)"/><path d="m63.819-19.1q-.665.7-1.681.7-1.016 0-1.716-.7-.665-.7-.665-1.681 0-.981.665-1.681.7-.7 1.716-.7 1.016 0 1.681.7.7.7.7 1.681 0 .981-.7 1.681m-.035-7.285h-3.292v-1.646q0-1.576.665-2.697.665-1.156 2.346-2.697.946-.876 1.331-1.296.42-.455.806-1.226.42-.806.42-1.646 0-1.611-1.051-2.592-1.016-.981-2.837-.981-3.01 0-4.133 3.362l-3.01-1.261q.735-1.996 2.522-3.572 1.821-1.611 4.623-1.611 3.187 0 5.183 1.891 1.996 1.856 1.996 4.763 0 1.261-.665 2.557-.665 1.296-1.191 1.856-.49.525-1.401 1.366-.105.105-.175.175-2.136 1.926-2.136 3.852v1.401" fill-opacity=".855" fill="#fff"/></g></svg>
+            </div>
+        </div>
+
+        <div class="input-field col s11">
+            <label class="active" for="comment">Комментарий</label>
+            <textarea class="materialize-textarea" name="comment"  id="comment"></textarea>
+        </div>
+
+        <label>
+            <input type="checkbox" class="checkbox-consent"/>
+            <span>Нажимая "Отправить", я соглашаюсь с <a href="/consent" target="_blank" class="link">условиями обработки персональных данных.</a></span>
+        </label>
+
+        <button type="submit" id="submit-btn" disabled class="waves-effect waves-light btn-large blue darken-2">Отправить</button>
+    </form>
+</div>
