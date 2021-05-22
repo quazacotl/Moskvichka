@@ -47,6 +47,11 @@ body {
     z-index: 1;
 }
 
+#row-status {
+    justify-content: flex-start;
+    padding-left: 30px;
+}
+
 p {
     color: #888888;
     font-size: 14px;
