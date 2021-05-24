@@ -4,26 +4,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const question = document.querySelector('.svg-question'),
         form = document.querySelector('.form'),
         button = document.querySelector('#submit-btn'),
-        checkBox = document.querySelector('.checkbox-consent')
-        inputs = document.querySelectorAll('input');
+        checkBox = document.querySelector('.checkbox-consent'),
+        inputs = document.querySelectorAll('input'),
+        uniqueNick = document.querySelector('#unique-nick'),
+        popupQuestion = document.querySelector('.popup-question');
 
+
+    // Блокировка кнопки "отправить", если данные уже были отправлены
     if (localStorage.getItem('isSent')) {
         button.setAttribute('disabled', 'true')
         checkBox.setAttribute('disabled', 'true')
     }
 
+    // Всплытие окошка помощи по нику телеграма
     question.addEventListener('mouseenter', () => {
         question.style.cursor = 'pointer'
-        const div = document.createElement('div')
-        div.classList.add('popup-question')
-        div.innerText = `Уникальный ник находится в настройках аккаунта, в графе "Имя пользователя", и начинается со знака @. Его желательно создать, если ещё не сделали этого.`
-        question.append(div)
+        popupQuestion.style.display = 'block'
     });
 
     question.addEventListener('mouseleave', () => {
-        question.removeChild(document.querySelector('.popup-question'))
+        popupQuestion.style.display = 'none'
     });
 
+    question.addEventListener('touch', () => {
+        if (popupQuestion.style.display === 'none') {
+            popupQuestion.style.display = 'block'
+        } else popupQuestion.style.display = 'none'
+    });
+
+    // Начальная @ в поле уникального ника
+    uniqueNick.addEventListener('focus', () => uniqueNick.value = '@')
+    uniqueNick.addEventListener('blur', () => uniqueNick.value = '')
+
+    // Маска телефона
     const mask = (selector) => {
 
         let setCursorPosition = (pos, elem) => {
@@ -73,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Активация кнопки "отправить" при нажатии на чекбокс согласия
     const enableButton = (buttonSelector, checkBoxSelector) => {
         const btn = document.querySelector(buttonSelector),
             checkbox = document.querySelector(checkBoxSelector);
@@ -91,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mask('#tel');
     enableButton('#submit-btn', '.checkbox-consent');
 
+    // Отправка формы
     button.addEventListener('click', async e => {
         e.preventDefault()
         try {
