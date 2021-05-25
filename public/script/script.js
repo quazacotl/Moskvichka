@@ -33,11 +33,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Начальная @ в поле уникального ника
-    uniqueNick.addEventListener('focus', () => uniqueNick.value = '@')
-    uniqueNick.addEventListener('blur', () => uniqueNick.value = '')
+    const events = ['focus', 'input', 'blur']
+
+    events.forEach(event => {
+        uniqueNick.addEventListener(event, () => {
+            switch (event) {
+                case 'focus': if (!uniqueNick.value) uniqueNick.value = '@'
+                    break
+                case 'input': if (uniqueNick.value.length === 0) uniqueNick.value = '@'
+                    break
+                case 'blur': if (uniqueNick.value.length === 1) uniqueNick.value = ''
+                    break
+            }
+        });
+    });
+
+
 
     // Маска телефона
-    const mask = (selector) => {
+    const mask = (selector, matrix) => {
 
         let setCursorPosition = (pos, elem) => {
             elem.focus();
@@ -55,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         function createMask(event) {
-            let matrix = '+7 (___) ___ __ __',
-                i = 0,
+            let i = 0,
                 def = matrix.replace(/\D/g, ''),
                 val = this.value.replace(/\D/g, '');
 
@@ -102,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    mask('#tel');
+    mask('#tel', '+7 (___) ___ __ __');
     enableButton('#submit-btn', '.checkbox-consent');
 
     // Отправка формы
