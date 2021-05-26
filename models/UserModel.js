@@ -10,8 +10,9 @@ const UserModel = new Schema({
         required: false
     },
     appartmentNumber: {
-        type: Number,
-        required: true
+        type: Array,
+        required: true,
+        default: undefined
     },
     phone: {
         type: String,

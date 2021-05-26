@@ -23,7 +23,7 @@ router.post('/api/postform', upload.none(), async (req, res) => {
     const candidate = new UserModel({
         name: req.body.name,
         surname: req.body.surname,
-        appartmentNumber: req.body.appnum,
+        appartmentNumber: req.body.appnum.split(/\D+/),
         phone: req.body.phone,
         status: req.body.status,
         telegramNick: req.body.nickname,
