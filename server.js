@@ -5,7 +5,7 @@ const config = require("config")
 const morgan = require('morgan')
 const path = require('path')
 const formRoute = require('./routes/formRoute')
-// const api = require('./modules/telegram')
+const { PurgeCSS } = require('purgecss')
 
 
 const PORT = config.get('port') || 3000
@@ -44,5 +44,11 @@ async function start () {
         console.log(e)
     }
 }
+
+const purgeCSSResult = new PurgeCSS().purge({
+    content: ['./views/partials/consent', './views/partials/form'],
+    css: ['./public/style/style.css']
+})
+purgeCSSResult
 
 start()

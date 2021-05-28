@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     M.updateTextFields()
 
     const question = document.querySelector('.svg-question'),
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mask('#tel', '+7 (___) ___ __ __');
     enableButton('#submit-btn', '.checkbox-consent');
+
 
     // Отправка формы
     button.addEventListener('click', async e => {
