@@ -131,6 +131,8 @@ label, span, .svg-question {
 
 .login {
     margin: 15px auto;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 576px) {
