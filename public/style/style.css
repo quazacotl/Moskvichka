@@ -135,6 +135,10 @@ label, span, .svg-question {
     justify-content: center;
 }
 
+.authorization-text {
+    margin-top: 20px;
+}
+
 @media (max-width: 576px) {
     .form {
         width: 310px;
