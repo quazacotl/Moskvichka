@@ -1,6 +1,28 @@
 <div class="container">
     <form action="/api/postform" class="col s12 m6 form">
         <div class="header">Данные жителя дома</div>
+        <div class="login">
+            <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="GreetingMSKVBot" data-size="medium" data-onauth="onTelegramAuth(user)"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="GreetingMSKVBot" data-size="medium" data-onauth="onTelegramAuth(user)"></script>
+            <script type="text/javascript">
+                function onTelegramAuth(user) {
+                    const uniqueNick = document.querySelector('#unique-nick'),
+                           nick = document.querySelector('#nickname');
+                    if (user.username) {
+                        uniqueNick.value = `@${user.username}`;
+                        uniqueNick.previousElementSibling.classList.add('active')
+                        uniqueNick.setAttribute('readonly', true)
+                    }
+                    nick.value = user.first_name
+                    nick.previousElementSibling.classList.add('active')
+                    nick.setAttribute('readonly', true)
+                }
+            </script>
+        </div>
+
+
+
+
         <div class="input-field col s11">
             <label class="active" for="name"><span class="asterisk">*</span> Имя</label>
             <input type="text" name="name" id="name" required>

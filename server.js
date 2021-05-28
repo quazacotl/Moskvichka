@@ -5,6 +5,7 @@ const config = require("config")
 const morgan = require('morgan')
 const path = require('path')
 const formRoute = require('./routes/formRoute')
+// const api = require('./modules/telegram')
 
 
 const PORT = config.get('port') || 3000
@@ -16,6 +17,7 @@ const hbs = expressHandlebars.create({
     extname: 'hbs'
 })
 
+
 app.engine('hbs', hbs.engine)
 
 app.set('view engine', 'hbs')
@@ -25,6 +27,7 @@ app.use(morgan('dev'))
 app.use(formRoute)
 
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 async function start () {
     try {
