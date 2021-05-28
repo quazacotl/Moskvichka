@@ -129,6 +129,10 @@ label, span, .svg-question {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.login {
+    margin: 15px auto;
+}
+
 @media (max-width: 576px) {
     .form {
         width: 310px;
