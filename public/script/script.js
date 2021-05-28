@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBox = document.querySelector('.checkbox-consent'),
         inputs = document.querySelectorAll('input'),
         uniqueNick = document.querySelector('#unique-nick'),
+        commentArea = document.querySelector('.materialize-textarea'),
         popupQuestion = document.querySelector('.popup-question');
 
 
@@ -133,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.setAttribute('disabled', 'true')
             checkBox.setAttribute('disabled', 'true')
             inputs.forEach(input => input.value = '')
+            commentArea.value = ''
             if (!localStorage.getItem('isSent')) {
                 localStorage.setItem('isSent', 'true')
             }
