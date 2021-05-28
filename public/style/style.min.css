@@ -146,6 +146,10 @@ label, span, .svg-question {
     font-weight: 400;
 }
 
+.hiddendiv {
+    display: none;
+}
+
 @media (max-width: 576px) {
     .form {
         width: 310px;
