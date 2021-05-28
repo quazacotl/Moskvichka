@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Блокировка кнопки "отправить", если данные уже были отправлены
-    if (localStorage.getItem('isSent')) {
-        button.setAttribute('disabled', 'true')
-        checkBox.setAttribute('disabled', 'true')
-    }
+    // if (localStorage.getItem('isSent')) {
+    //     button.setAttribute('disabled', 'true')
+    //     checkBox.setAttribute('disabled', 'true')
+    // }
 
     // Всплытие окошка помощи по нику телеграма
     question.addEventListener('mouseenter', () => {
@@ -137,9 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBox.setAttribute('disabled', 'true')
             inputs.forEach(input => input.value = '')
             commentArea.value = ''
-            if (!localStorage.getItem('isSent')) {
-                localStorage.setItem('isSent', 'true')
-            }
+            // if (!localStorage.getItem('isSent')) {
+            //     localStorage.setItem('isSent', 'true')
+            // }
             M.toast({html: json.message});
 
         } catch (e) {
