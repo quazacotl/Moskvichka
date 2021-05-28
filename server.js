@@ -27,8 +27,6 @@ app.use(morgan('dev'))
 app.use(formRoute)
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/images', express.static(__dirname + '/public/images'));
-
 
 async function start () {
     try {
