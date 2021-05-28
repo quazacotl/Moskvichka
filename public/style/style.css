@@ -139,6 +139,13 @@ label, span, .svg-question {
     margin-top: 20px;
 }
 
+.authorization-help {
+    color: #888888;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
 @media (max-width: 576px) {
     .form {
         width: 310px;
