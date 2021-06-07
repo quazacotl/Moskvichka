@@ -23,6 +23,7 @@
 }
 body {
     background-color: azure;
+    position: relative;
 }
 
 
@@ -148,6 +149,24 @@ label, span, .svg-question {
 
 .hiddendiv {
     display: none;
+}
+
+.modal-div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    owerflow: hidden;
+    /*display: none;*/
 }
 
 @media (max-width: 576px) {

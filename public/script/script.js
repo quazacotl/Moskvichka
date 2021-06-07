@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs = document.querySelectorAll('input'),
         uniqueNick = document.querySelector('#unique-nick'),
         commentArea = document.querySelector('.materialize-textarea'),
+        modalDiv = document.querySelector('.modal-div'),
         popupQuestion = document.querySelector('.popup-question');
 
 
@@ -140,6 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // if (!localStorage.getItem('isSent')) {
             //     localStorage.setItem('isSent', 'true')
             // }
+
+            modalDiv.textContent = json.message
+            modalDiv.style.display = 'block'
+
+            setTimeout(() => {
+                modalDiv.style.display = 'none'
+            }, 3000);
+
             M.toast({html: json.message});
 
         } catch (e) {
