@@ -29,6 +29,10 @@ app.use(formRoute)
 app.use(express.static(path.join(__dirname, 'public')))
 
 async function start () {
+    app.listen(PORT, () => {
+        console.log('Server has been started...')
+    });
+
     try {
         await mongoose.connect(config.get('dbUrl'), {
             useNewUrlParser: true,
@@ -36,19 +40,11 @@ async function start () {
             useUnifiedTopology: true
         })
 
-        app.listen(PORT, () => {
-            console.log('Server has been started...')
-        });
+
 
     } catch (e) {
         console.log(e)
     }
 }
-
-const purgeCSSResult = new PurgeCSS().purge({
-    content: ['./views/partials/consent', './views/partials/form'],
-    css: ['./public/style/style.css']
-})
-purgeCSSResult
 
 start()

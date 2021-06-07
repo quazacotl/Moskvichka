@@ -24,6 +24,7 @@
 body {
     background-color: azure;
     position: relative;
+
 }
 
 
@@ -151,22 +152,40 @@ label, span, .svg-question {
     display: none;
 }
 
+.wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(30, 30, 30, 0.3);
+    display: none;
+    place-items: center;
+    z-index: 2;
+}
+
 .modal-div {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 20%;
+    max-width: 18rem;
+    /*height: 10rem;*/
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 30px;
+    border-radius: 7px;
+}
+
+.confirm-text {
     font-size: 18px;
+    line-height: 23px;
+    text-align: center;
     font-weight: 400;
-    line-height: 22px;
-    owerflow: hidden;
-    /*display: none;*/
+}
+
+.loading {
+    width: 80px;
+    height: 80px;
 }
 
 @media (max-width: 576px) {

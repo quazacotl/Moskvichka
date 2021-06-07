@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs = document.querySelectorAll('input'),
         uniqueNick = document.querySelector('#unique-nick'),
         commentArea = document.querySelector('.materialize-textarea'),
+        wrapper = document.querySelector('.wrapper'),
         modalDiv = document.querySelector('.modal-div'),
         popupQuestion = document.querySelector('.popup-question');
 
@@ -120,6 +121,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Окно подтверждения
+    const showPopUp = (message, color) => {
+        modalDiv.innerHTML = `<h3 class="confirm-text"></h3>`
+        let confirmText = modalDiv.querySelector('.confirm-text');
+        confirmText.textContent = message
+        confirmText.style.color = color
+
+        wrapper.style.display = 'grid'
+        document.body.style.overflow = 'hidden'
+        setTimeout(() => {
+            wrapper.style.display = 'none'
+            document.body.style.overflow = 'visible'
+        }, 5000);
+    }
+
+    // Окно загрузки
+    const showLoading = () => {
+        modalDiv.innerHTML = `<img class="loading" src="./images/loading.svg" alt="loading">`
+        wrapper.style.display = 'grid'
+        document.body.style.overflow = 'hidden'
+    }
+
 
     mask('#tel', '+7 (___) ___ __ __');
     enableButton('#submit-btn', '.checkbox-consent');
@@ -128,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Отправка формы
     button.addEventListener('click', async e => {
         e.preventDefault()
+        showLoading()
         try {
             const response = await fetch('/api/postform', {
                 method: 'POST',
@@ -138,21 +162,13 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBox.setAttribute('disabled', 'true')
             inputs.forEach(input => input.value = '')
             commentArea.value = ''
-            // if (!localStorage.getItem('isSent')) {
-            //     localStorage.setItem('isSent', 'true')
-            // }
+            wrapper.style.display = 'none'
+            showPopUp(json.message, '#2bbbad')
 
-            modalDiv.textContent = json.message
-            modalDiv.style.display = 'block'
-
-            setTimeout(() => {
-                modalDiv.style.display = 'none'
-            }, 3000);
-
-            M.toast({html: json.message});
 
         } catch (e) {
-            M.toast({html: e});
+            wrapper.style.display = 'none'
+            showPopUp('Ошибка записи в базу данных', '#da553f')
         }
     });
 });
