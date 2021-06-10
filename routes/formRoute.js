@@ -3,7 +3,7 @@ const multer = require('multer')
 const upload = multer()
 const router = Router()
 const UserModel = require('../models/UserModel')
-const getUsers = require('../public/getUsers/getUsers')
+const {getUsersByDefault, getUsersByAppNum} = require('../public/getUsers/getUsers')
 
 
 router.get('/', (req, res) => {
@@ -28,7 +28,8 @@ router.get('/users', (req, res) => {
     })
 })
 
-router.get('/get-users',  getUsers)
+router.get('/get-users-by-default',  getUsersByDefault)
+router.get('/get-users-by-num',  getUsersByAppNum)
 
 router.post('/api/postform', upload.none(), async (req, res) => {
     const candidate = new UserModel({
