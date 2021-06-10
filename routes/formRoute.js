@@ -3,6 +3,7 @@ const multer = require('multer')
 const upload = multer()
 const router = Router()
 const UserModel = require('../models/UserModel')
+const getUsers = require('../public/getUsers/getUsers')
 
 
 router.get('/', (req, res) => {
@@ -18,6 +19,16 @@ router.get('/consent', (req, res) => {
         title: 'Согласие'
     })
 })
+
+router.get('/users', (req, res) => {
+    res.status(200)
+    res.render('get-users-page', {
+        title: 'GetUser',
+        layout: 'getUsers'
+    })
+})
+
+router.get('/get-users',  getUsers)
 
 router.post('/api/postform', upload.none(), async (req, res) => {
     const candidate = new UserModel({
