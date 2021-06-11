@@ -1,4 +1,0 @@
-{
-  "dbUrl": "mongodb+srv://vagrant:ff1815645@cluster0.x0v4p.mongodb.net/Moskvichka?retryWrites=true&w=majority",
-  "port": 3000
-}
