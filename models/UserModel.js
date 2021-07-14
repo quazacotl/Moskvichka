@@ -1,6 +1,10 @@
 const {Schema, model} = require('mongoose')
 
 const UserModel = new Schema({
+    timeAdded:{
+      type: String,
+      default: null
+    },
     name: {
         type: String,
         required: true

@@ -1,7 +1,9 @@
 const {Router} = require('express')
 const multer = require('multer')
+const _ = require('lodash/string')
 const upload = multer()
 const router = Router()
+const date = require('date-and-time');
 const UserModel = require('../models/UserModel')
 const {getUsersByDefault, getUsersByAppNum} = require('../public/getUsers/getUsers')
 
@@ -33,13 +35,14 @@ router.get('/get-users-by-num',  getUsersByAppNum)
 
 router.post('/api/postform', upload.none(), async (req, res) => {
     const candidate = new UserModel({
-        name: req.body.name,
-        surname: req.body.surname,
-        appartmentNumber: req.body.appnum.split(/\D+/),
+        timeAdded: date.format(new Date(), 'DD/MM/YYYY HH:mm:ss'),
+        name: _.trim(req.body.name),
+        surname: _.trim(req.body.surname),
+        appartmentNumber: _.trim(req.body.appnum).split(/\D+/),
         phone: req.body.phone,
         status: req.body.status,
-        telegramNick: req.body.nickname,
-        telegramUniqueNick: req.body.uniqueNickname,
+        telegramNick: _.trim(req.body.nickname),
+        telegramUniqueNick: _.trim(req.body.uniqueNickname),
         comment: req.body.comment
     })
     try {
